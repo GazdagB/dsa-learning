@@ -5,7 +5,6 @@
  * @returns {Number}
  */
 function binarySearch(arr, targetValue){
-
     let left = 0;
     let right = arr.length -1;
 
@@ -60,9 +59,37 @@ function binaryRecursive(arr,targetValue,left,right){
 
 }
 
-const sortedArray = [1,2,5,9,16,28,47,64,78,99,120,158,225]
-const targetValue = 2; 
 
 
-console.log(binarySearch(sortedArray,targetValue));
-console.log(binaryRecursive(sortedArray,targetValue,0,sortedArray.length - 1))
+/**
+ * Generates a sorted array of ascending integers.
+ * @param {number} size - Length of the array.
+ * @param {number} step - Step between elements (default is 1).
+ * @returns {number[]}
+ */
+function generateSortedArray(size, step = 1) {
+    const arr = [];
+    for (let i = 0; i < size; i++) {
+        arr.push(i * step);
+    }
+    return arr;
+}
+
+const sortedArray = generateSortedArray(10000000,1)
+const targetValue = 1000000; 
+
+
+function measureTimeAndLog(fn){
+    const startTime = performance.now()
+    const foundIndex = fn()
+    const endTime = performance.now() 
+
+    const ellapsedTime = endTime - startTime; 
+
+    const seconds = ellapsedTime / 1000;
+
+    console.log(`Target found at index ${foundIndex} in ${ellapsedTime} milliseconds`)
+}
+
+measureTimeAndLog(()=>binarySearch(sortedArray,targetValue))
+measureTimeAndLog(()=>binaryRecursive(sortedArray,targetValue,0, sortedArray.length -1))
