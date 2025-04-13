@@ -14,7 +14,15 @@ The Linear Search algorithm is a simple search method that sequentially checks e
 4. If no match is found after checking all elements, return -1.
 
 ## Complexity Analysis:
-- **Time Complexity:** O(n), where n is the number of elements in the array.
+### Time Complexity: 
+
+O(n), where n is the number of elements in the array.
+
+- Best Case*: The best case occurs when the target element is the first element in the array, leading to an immediate match and requiring only 1 comparison (O(1)).
+
+- Worst Case: The worst case happens when the target element is either at the end of the array or not present at all, resulting in the algorithm needing to check every element in the array, leading to n comparisons (O(n)).
+
+- Average Case: On average, the Linear Search will check about half of the elements in the array, which still gives it a time complexity of O(n).
 
 - **Space Complexity:** O(1), as it uses only a few variables and doesn't require extra space.
 
